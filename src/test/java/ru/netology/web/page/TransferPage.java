@@ -12,10 +12,13 @@ public class TransferPage {
     private SelenideElement amountInput = $("[data-test-id='amount'] input");
     private SelenideElement fromInput = $("[data-test-id='from'] input");
     private SelenideElement transferHead = $(byText("Пополнение карты"));
+    private SelenideElement transferError = $(byText("Ошибка"));
+
 
     public TransferPage() {
         transferHead.shouldBe(visible);
     }
+    public void TransferError() {transferError.shouldBe(visible);}
 
     public DashboardPage makeTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
         amountInput.setValue(amountToTransfer);

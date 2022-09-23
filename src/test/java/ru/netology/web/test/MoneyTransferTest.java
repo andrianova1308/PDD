@@ -73,10 +73,11 @@ class MoneyTransferTest {
         var firstCard = DataHelper.getCardInfo1();
         var secondCard = DataHelper.getCardInfo2();
         int amount = 20000;
-        var expectedBalanceFirstCard = dashboardPage.getCardBalance01() + amount;
-        var expectedBalanceSecondCard = dashboardPage.getCardBalance02() - amount;
+        var expectedBalanceFirstCard = dashboardPage.getCardBalance01();
+        var expectedBalanceSecondCard = dashboardPage.getCardBalance02();
         var transferPage = dashboardPage.selectCardToTransfer(firstCard);
         transferPage.makeTransfer(String.valueOf(amount), secondCard);
+        transferPage.TransferError();
         var actualBalanceFirstCard = dashboardPage.getCardBalance01();
         var actualBalanceSecondCard = dashboardPage.getCardBalance02();
         assertEquals(expectedBalanceFirstCard, actualBalanceFirstCard);
